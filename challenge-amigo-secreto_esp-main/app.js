@@ -40,8 +40,25 @@ function actualizarListaAmigos() {
 
     // Recorrer el array "amigos" y mostrar cada nombre
     amigos.forEach((amigo, index) => {
-        const parrafo = document.createElement('p'); // Crear un párrafo para cada amigo
-        parrafo.textContent = `${index + 1}. ${amigo}`; // Mostrar el nombre con un número
+        const parrafo = document.createElement('p'); 
+        parrafo.textContent = `${amigo}`; 
         listaAmigosElement.appendChild(parrafo); // Añadir el párrafo al div
     });
+}
+// Función para sortear un amigo aleatorio
+function sortearAmigo() {
+    // Validar que haya amigos disponibles
+    if (amigos.length === 0) {
+        document.getElementById('resultado').innerHTML = "No hay amigos disponibles para sortear.";
+        return; // Detener la ejecución si no hay amigos
+    }
+
+    // Generar un índice aleatorio
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+
+    // Obtener el nombre sorteado
+    const amigoSorteado = amigos[indiceAleatorio];
+
+    // Mostrar el resultado en la página
+    document.getElementById('resultado').innerHTML = `¡El amigo sorteado es: <strong>${amigoSorteado}</strong>!`;
 }
